@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/components/header_section.dart';
+import 'package:portfolio/components/hero_section.dart';
 
 void main() {
   runApp(const MyPortfolioApp());
@@ -12,113 +14,27 @@ class MyPortfolioApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFF0C1B2A), // Dark background color
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              // Header
-              HeaderSection(),
-              // Hero Section
-              HeroSection(),
-              // Introduction Section
-              IntroductionSection(),
-              // Skills Section
-              SkillsSection(),
-              // Portfolio Section
-              // Footer Section
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class HeaderSection extends StatelessWidget {
-  const HeaderSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity, // Full width
-      padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 40.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text('Mark Clarde',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold)),
-          Row(
-            children: [
-              _navButton('About'),
-              _navButton('Skill'),
-              _navButton('Portfolio'),
-              _navButton('Contact'),
-              _navButton('Resume', isHighlighted: true),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _navButton(String text, {bool isHighlighted = false}) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: TextButton(
-        onPressed: () {},
-        style: TextButton.styleFrom(
-          foregroundColor: isHighlighted ? Colors.green : Colors.white,
-          backgroundColor:
-              isHighlighted ? Colors.green.withOpacity(0.1) : Colors.transparent,
-        ),
-        child: Text(text, style: const TextStyle(fontSize: 16)),
-      ),
-    );
-  }
-}
-
-class HeroSection extends StatelessWidget {
-  const HeroSection({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(40.0),
-      child: SizedBox(
-        width: 600, // Set specific width for HeroSection
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        backgroundColor: Color(0xFF0C1B2A),
+        body: Column(
           children: [
-            const Text('Hello! I am',
-                style: TextStyle(color: Colors.green, fontSize: 28)),
-            const SizedBox(height: 10),
-            const Text('Mark Clarde',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold)),
-            const SizedBox(height: 10),
-            const Text('Back-end Developer',
-                style: TextStyle(color: Colors.white70, fontSize: 22)),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                  child: const Text('Get Resume'),
+            HeaderSection(),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Center(
+                  child: Column(
+                    children: [
+                      HeroSection(),
+                      SizedBox(height: 175),
+                      // Introduction Section
+                      IntroductionSection(),
+                      // Skills Section
+                      // SkillsSection(),
+                      // Portfolio Section
+                      // Footer Section
+                    ],
+                  ),
                 ),
-                const SizedBox(width: 20),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(backgroundColor: Colors.white24),
-                  child: const Text('About Me'),
-                ),
-              ],
+              ),
             ),
           ],
         ),
@@ -135,7 +51,7 @@ class IntroductionSection extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 50.0, horizontal: 40.0),
       child: SizedBox(
-        width: 800, // Set specific width for IntroductionSection
+        width: 750, // Set specific width for IntroductionSection
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
