@@ -150,18 +150,18 @@ class SocialMediaLinks extends StatelessWidget {
           color: Colors.white,
         ),
         const SizedBox(height: 20),
-        const RotatedBox(
-          quarterTurns: 3,
-          child: Text(
-            "FOLLOW ME",
-            style: TextStyle(color: Colors.white, fontSize: 16),
-          ),
-        ),
-        const SizedBox(height: 20),
         Container(
           width: 2,
           height: 80,
           color: Colors.white, // Line below "FOLLOW ME"
+        ),
+        const SizedBox(height: 20),
+        const RotatedBox(
+          quarterTurns: 3,
+          child: Text(
+            "FOLLOW ME",
+            style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
         ),
       ],
     );

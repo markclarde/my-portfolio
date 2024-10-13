@@ -15,37 +15,35 @@ class HeaderSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text(
-                'Mark Clarde',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
+              Image.asset(
+                'assets/images/mark_clarde.png', // Replace with your image path
+                width: 75,  // Adjust the width if needed
+                height: 75, // Adjust the height if needed
+                fit: BoxFit.cover, // This controls how the image will fit within the given dimensions
               ),
               // Use a conditional to display buttons as a Row or Drawer
               screenWidth > 600
-                  ? Row(
-                      children: [
-                        _navButton('ABOUT'),
-                        const SizedBox(width: 20), // Add space between buttons
-                        _navButton('SKILL'),
-                        const SizedBox(width: 20),
-                        _navButton('PORTFOLIO'),
-                        const SizedBox(width: 20),
-                        _navButton('CONTACT'),
-                        const SizedBox(width: 20),
-                        _navButton('BLOG'),
-                        const SizedBox(width: 20),
-                        _navButton('RESUME', isStaticBorder: true), // Resume button with static border
-                      ],
-                    )
-                  : IconButton(
-                      icon: const Icon(Icons.menu, color: Colors.white), // Menu icon
-                      onPressed: () {
-                        _openDrawer(context); // Open the drawer on tap
-                      },
-                    ),
+              ? Row(
+                children: [
+                  _navButton('ABOUT'),
+                  const SizedBox(width: 20), // Add space between buttons
+                  _navButton('SKILL'),
+                  const SizedBox(width: 20),
+                  _navButton('PORTFOLIO'),
+                  const SizedBox(width: 20),
+                  _navButton('CONTACT'),
+                  const SizedBox(width: 20),
+                  _navButton('BLOG'),
+                  const SizedBox(width: 20),
+                  _navButton('RESUME', isStaticBorder: true), // Resume button with static border
+                ],
+              )
+              : IconButton(
+                icon: const Icon(Icons.menu, color: Colors.white), // Menu icon
+                onPressed: () {
+                  _openDrawer(context); // Open the drawer on tap
+                },
+              ),
             ],
           ),
         );
