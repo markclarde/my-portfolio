@@ -49,6 +49,9 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width; // Get the screen width
+    final isLargeScreen = screenWidth > 600; // Define a breakpoint for large screens
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -63,16 +66,15 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
             Expanded(
               child: SingleChildScrollView(
                 controller: _scrollController, // Attach the scroll controller
-                child: const Center(
+                child: Center(
                   child: Column(
                     children: [
-                      HeroSection(),
-                      SizedBox(height: 39),
+                      const HeroSection(),
+                      const SizedBox(height: 5),
                       // Introduction Section
-                      IntroductionSection(),
-                      SizedBox(height: 10),
+                      const IntroductionSection(),
                       // Skills Section
-                      // SkillsSection(),
+                      SkillsSection(isLargeScreen: isLargeScreen), // Pass screen size info
                       // Portfolio Section
                       // Footer Section
                     ],
@@ -89,22 +91,24 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
 
 
 class SkillsSection extends StatelessWidget {
-  const SkillsSection({super.key});
+  final bool isLargeScreen;
+
+  const SkillsSection({super.key, required this.isLargeScreen});
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(40.0),
+    return Padding(
+      padding: EdgeInsets.all(isLargeScreen ? 40.0 : 20.0), // Responsive padding
       child: SizedBox(
-        width: 600, // Set specific width for SkillsSection
+        width: isLargeScreen ? 600 : MediaQuery.of(context).size.width * 0.9, // Set specific width for SkillsSection
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('My Skills', style: TextStyle(color: Colors.white, fontSize: 28)),
-            SizedBox(height: 20),
-            SkillItem(title: 'React', level: 0.9),
-            SkillItem(title: 'Next.js', level: 0.75),
-            SkillItem(title: 'Node.js', level: 0.8),
+            Text('My Skills', style: TextStyle(color: Colors.white, fontSize: isLargeScreen ? 28 : 24)),
+            const SizedBox(height: 20),
+            const SkillItem(title: 'React', level: 0.9),
+            const SkillItem(title: 'Next.js', level: 0.75),
+            const SkillItem(title: 'Node.js', level: 0.8),
             // Add more skills as per the design
           ],
         ),
@@ -124,7 +128,7 @@ class SkillItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: SizedBox(
-        width: 800, // Set specific width for each skill item
+        width: 800, // You can also make this responsive if needed
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

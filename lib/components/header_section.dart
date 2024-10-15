@@ -5,13 +5,14 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Use MediaQuery to get the screen width
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return LayoutBuilder(
       builder: (context, constraints) {
-        final screenWidth = constraints.maxWidth; // Get the width from constraints
-
         return Container(
-          width: screenWidth > 600 ? 1250 : screenWidth, // Full width on mobile or 1250 on larger screens
-          padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0), // Adjust padding
+          width: screenWidth, // Full width on mobile or 1250 on larger screens
+          padding: EdgeInsets.only(left: screenWidth *0.15, right: screenWidth *0.15, top: screenWidth *0.01),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -82,7 +83,10 @@ class HeaderSection extends StatelessWidget {
       child: MouseRegion(
         cursor: SystemMouseCursors.click, // Change cursor to pointer on hover
         child: GestureDetector(
-          onTap: () {}, // Handle tap event
+          onTap: () {
+            // Handle tap event
+            print('$text button tapped');
+          },
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             decoration: BoxDecoration(
