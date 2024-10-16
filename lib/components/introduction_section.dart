@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IntroductionSection extends StatelessWidget {
-  const IntroductionSection({Key? key}) : super(key: key);
+  const IntroductionSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -9,33 +9,33 @@ class IntroductionSection extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     // Check if the screen width is less than 600 (mobile breakpoint)
-    final isMobile = screenWidth < 600;
+    final isMobile = screenWidth < 800;
 
-    return Container(
+    return SizedBox(
       height: screenHeight,
       width: screenWidth,
       child: isMobile
           ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 100,
                   backgroundImage: NetworkImage(
                     "https://scontent.fdvo5-1.fna.fbcdn.net/v/t39.30808-6/327170723_1215938732681445_7746818936963562833_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=XCkgGVkokn8Q7kNvgH3lp7j&_nc_ht=scontent.fdvo5-1.fna&_nc_gid=A_o5n0TG6VXArJaGVDL5wUR&oh=00_AYDSazWTaUw_xU6TfyEMDKtf5zfxnQwy3nkLo2X6GtD9Kw&oe=670BD2EA",
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Container(
-                  padding: EdgeInsets.only(left: 10, right: 10),
+                  padding: const EdgeInsets.only(left: 10, right: 10),
                   width: 500,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Hello! I'm Zonayed Ahmed, a passionate software engineer. I develop web applications, mobile applications, and desktop applications. My core skill is based on JavaScript and I love to do most of the things using JavaScript. I love to make the web more open to the world. I have graduated with a bachelor's degree in Computer Science Engineering from Chandigarh University at Punjab, India in 2020. I am available for any kind of job opportunity that suits my interests.",
                         style: TextStyle(color: Colors.white70, fontSize: 20),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -87,16 +87,16 @@ class IntroductionSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
+                SizedBox(
                   width: 500,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Hello! I'm Zonayed Ahmed, a passionate software engineer. I develop web applications, mobile applications, and desktop applications. My core skill is based on JavaScript and I love to do most of the things using JavaScript. I love to make the web more open to the world. I have graduated with a bachelor's degree in Computer Science Engineering from Chandigarh University at Punjab, India in 2020. I am available for any kind of job opportunity that suits my interests.",
                         style: TextStyle(color: Colors.white70, fontSize: 20),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Row(
                         children: [
                           ElevatedButton(
@@ -141,7 +141,7 @@ class IntroductionSection extends StatelessWidget {
                     ],
                   ),
                 ),
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 100,
                   backgroundImage: NetworkImage(
                     "https://scontent.fdvo5-1.fna.fbcdn.net/v/t39.30808-6/327170723_1215938732681445_7746818936963562833_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=XCkgGVkokn8Q7kNvgH3lp7j&_nc_ht=scontent.fdvo5-1.fna&_nc_gid=A_o5n0TG6VXArJaGVDL5wUR&oh=00_AYDSazWTaUw_xU6TfyEMDKtf5zfxnQwy3nkLo2X6GtD9Kw&oe=670BD2EA",

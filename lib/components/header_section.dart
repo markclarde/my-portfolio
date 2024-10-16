@@ -23,19 +23,14 @@ class HeaderSection extends StatelessWidget {
                 fit: BoxFit.cover, // This controls how the image will fit within the given dimensions
               ),
               // Use a conditional to display buttons as a Row or Drawer
-              screenWidth > 600
+              screenWidth > 1000
               ? Row(
                 children: [
-                  _navButton('ABOUT'),
-                  const SizedBox(width: 20), // Add space between buttons
+                  _navButton('ABOUT'), // Add space between buttons
                   _navButton('SKILL'),
-                  const SizedBox(width: 20),
                   _navButton('PORTFOLIO'),
-                  const SizedBox(width: 20),
                   _navButton('CONTACT'),
-                  const SizedBox(width: 20),
                   _navButton('BLOG'),
-                  const SizedBox(width: 20),
                   _navButton('RESUME', isStaticBorder: true), // Resume button with static border
                 ],
               )
