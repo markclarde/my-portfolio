@@ -6,10 +6,8 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
     return SizedBox( 
-      height: screenHeight,
       
       child: Padding(
         padding: EdgeInsets.only(left: screenWidth *0.07, right: screenWidth *0.06), // Adjust vertical padding based on screen size
@@ -134,7 +132,7 @@ class SocialMediaLinks extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Container(
-      padding: EdgeInsets.only(top: screenHeight *0.1),
+      padding: EdgeInsets.only(top: screenHeight *0.2),
 
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -167,15 +165,21 @@ class SocialMediaLinks extends StatelessWidget {
           const SizedBox(height: 20),
           Container(
             width: 2,
-            height: 80,
+            height: 120,
             color: Colors.white, // Line below "FOLLOW ME"
           ),
-          const SizedBox(height: 20),
-          const RotatedBox(
+          RotatedBox(
             quarterTurns: 3,
-            child: Text(
-              "FOLLOW ME",
-              style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+            child: Container(
+              padding: const EdgeInsets.all(8.0), // Optional: add padding inside the border
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.grey, width: 2), // Gray border
+                borderRadius: const BorderRadius.all(Radius.circular(3.0)),
+              ),
+              child: const Text(
+                "FOLLOW ME",
+                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ],

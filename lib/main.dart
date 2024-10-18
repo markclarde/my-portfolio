@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:portfolio/components/contact_section.dart';
+import 'package:portfolio/components/footer_section.dart';
 import 'package:portfolio/components/header_section.dart';
 import 'package:portfolio/components/hero_section.dart';
 import 'package:portfolio/components/introduction_section.dart';
+import 'package:portfolio/components/skills_section.dart';
 
 void main() {
   runApp(const MyPortfolioApp());
@@ -41,6 +44,12 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
     });
   }
 
+  void _showHeader() {
+    setState(() {
+      _isHeaderVisible = true; // Show the header when called
+    });
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -70,75 +79,22 @@ class _MyPortfolioAppState extends State<MyPortfolioApp> {
                   child: Column(
                     children: [
                       const HeroSection(),
-                      const SizedBox(height: 5),
                       // Introduction Section
                       const IntroductionSection(),
                       // Skills Section
                       SkillsSection(isLargeScreen: isLargeScreen), // Pass screen size info
-                      // Portfolio Section
+                      const SizedBox(height: 150),
+                      const ContactSection(),
+                      const SizedBox(height: 50),
                       // Footer Section
+                      FooterSection(
+                        scrollController: _scrollController,
+                        onScrollToTop: _showHeader, // Pass the callback
+                      ),
                     ],
                   ),
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-
-class SkillsSection extends StatelessWidget {
-  final bool isLargeScreen;
-
-  const SkillsSection({super.key, required this.isLargeScreen});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(isLargeScreen ? 40.0 : 20.0), // Responsive padding
-      child: SizedBox(
-        width: isLargeScreen ? 600 : MediaQuery.of(context).size.width * 0.9, // Set specific width for SkillsSection
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('My Skills', style: TextStyle(color: Colors.white, fontSize: isLargeScreen ? 28 : 24)),
-            const SizedBox(height: 20),
-            const SkillItem(title: 'React', level: 0.9),
-            const SkillItem(title: 'Next.js', level: 0.75),
-            const SkillItem(title: 'Node.js', level: 0.8),
-            // Add more skills as per the design
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SkillItem extends StatelessWidget {
-  final String title;
-  final double level;
-
-  const SkillItem({super.key, required this.title, required this.level});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: SizedBox(
-        width: 800, // You can also make this responsive if needed
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(title, style: const TextStyle(color: Colors.white, fontSize: 16)),
-            const SizedBox(height: 10),
-            LinearProgressIndicator(
-              value: level,
-              color: Colors.green,
-              backgroundColor: Colors.white24,
-              minHeight: 8,
             ),
           ],
         ),
